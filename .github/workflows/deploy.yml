@@ -7,25 +7,10 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+    container: ghcr.io/railwayapp/cli:latest
+    env:
+      SVC_ID: my-service-id
+      RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: '8.1'
-        extensions: mbstring, bcmath, ctype, json, tokenizer, xml, curl
-        coverage: none
-
-    - name: Install Dependencies
-      run: composer install --no-dev --optimize-autoloader
-
-    - name: Run Migrations
-      run: php artisan migrate --force
-
-    - name: Deploy to Railway
-      env:
-        RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-      run: railway up
+      - uses: actions/checkout@v3
+      - run: railway up --service=${{ env.SVC_ID }}
