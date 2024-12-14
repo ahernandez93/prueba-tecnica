@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\CategoriaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::resource('productos', ProductoController::class);
+Route::resource('categorias', CategoriaController::class);
+
+Route::get('/productos/{id}/edit', [ProductoController::class, 'edit'])->name('productos.edit');
+
 
 Route::get('/', function () {
     return view('welcome');
