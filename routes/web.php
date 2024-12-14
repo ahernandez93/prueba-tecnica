@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::resource('productos', ProductoController::class);
 Route::resource('categorias', CategoriaController::class);
 
-Route::get('/productos/{id}/edit', [ProductoController::class, 'edit'])->name('productos.edit');
+Route::get('/productos/{id}/edit', [ProductoController::class, 'edit'])->name('productos.custom_edit');
 
 
 Route::get('/', function () {

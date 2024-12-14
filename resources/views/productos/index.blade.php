@@ -30,7 +30,7 @@
                                     @endforeach
                                 </td>
                                 <td class="border border-gray-300 px-4 py-2">
-                                    <a href="{{ route('productos.edit', $producto) }}"
+                                    <a href="{{ route('productos.custom_edit', $producto) }}"
                                         class="bg-yellow-500 text-black py-1 px-3 rounded">Editar</a>
                                     <form action="{{ route('productos.destroy', $producto) }}" method="POST"
                                         class="inline-block">
